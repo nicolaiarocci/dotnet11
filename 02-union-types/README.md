@@ -83,6 +83,25 @@ stesso contratto del codice C#:
 
 Tutte le risposte complete sono in [`output-atteso/`](output-atteso).
 
+### E in deserializzazione?
+
+Il JSON della union non ha un discriminatore come `$type`. Di default System.Text.Json
+distingue i casi solo dal tipo di valore JSON (oggetto, stringa, numero...): qui i tre
+casi sono tutti oggetti, quindi `JsonSerializer.Deserialize<MetodoDiPagamento>` fallisce
+con un errore di ambiguità. La demo non ne risente perché la union viene solo restituita.
+
+Per leggerla serve un classificatore, indicato con `[JsonUnion]`. Quello strutturale
+riconosce il caso dai nomi delle proprietà:
+
+```csharp
+[JsonUnion(TypeClassifier = typeof(JsonUnionTypeStructuralClassifier))]
+public union MetodoDiPagamento(CartaDiCredito, Bonifico, Contrassegno);
+```
+
+Se due casi hanno la stessa forma JSON, il classificatore strutturale non tira a
+indovinare: lancia un `NotSupportedException`. In quel caso serve un classificatore
+scritto a mano.
+
 ## Note
 
 - La versione di `Microsoft.AspNetCore.OpenApi` in `UnionDemo.csproj` è allineata alla
