@@ -17,20 +17,16 @@ await CaricaOrdineAsync(42);
 
 static async Task CaricaOrdineAsync(int id)
 {
-    await Task.CompletedTask;
     await CalcolaTotaleAsync(id);
 }
 
 static async Task CalcolaTotaleAsync(int id)
 {
-    await Task.CompletedTask;
     await ApplicaScontiAsync(id);
 }
 
 static async Task ApplicaScontiAsync(int id)
 {
-    await Task.CompletedTask;
-
     // Si stampano i frame uno a uno invece di usare StackTrace.ToString(),
     // che salta alcuni frame di infrastruttura (es. AsyncTaskMethodBuilder.Start)
     // e "ripulisce" i MoveNext delle state machine: così si vede tutto

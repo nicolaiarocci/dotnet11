@@ -21,7 +21,7 @@ In modalità `classic` ogni metodo async porta con sé tre frame di infrastruttu
 ```
 Frame sullo stack: 17
 ------------------------------------------------------------
-   ApplicaScontiAsync.MoveNext  in Program.cs:38   <- state machine
+   ApplicaScontiAsync.MoveNext  in Program.cs:34   <- state machine
    AsyncMethodBuilderCore.Start
    AsyncTaskMethodBuilder.Start
    Program.ApplicaScontiAsync
@@ -33,9 +33,9 @@ In modalità `runtime` resta solo la catena di chiamate scritta nel codice:
 ```
 Frame sullo stack: 5
 ------------------------------------------------------------
-   Program.ApplicaScontiAsync  in Program.cs:38
-   Program.CalcolaTotaleAsync  in Program.cs:27
-   Program.CaricaOrdineAsync  in Program.cs:21
+   Program.ApplicaScontiAsync  in Program.cs:34
+   Program.CalcolaTotaleAsync  in Program.cs:25
+   Program.CaricaOrdineAsync  in Program.cs:20
    Program.<Main>$  in Program.cs:16
    Program.<Main>
 ```
