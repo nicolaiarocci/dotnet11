@@ -46,13 +46,13 @@ e lanciate `dotnet build`: il build fallisce perché lo switch su `StatoOrdine` 
 gestisce il nuovo caso.
 
 ```
-Model.cs(39,63): error CS8509: The switch expression does not handle all possible values
+Model.cs(40,63): error CS8509: The switch expression does not handle all possible values
 of its input type (it is not exhaustive). For example, the pattern 'UnionDemo.Consegnato'
 is not covered.
 ```
 
 Di norma CS8509 è un warning; qui `WarningsAsErrors` in `UnionDemo.csproj` lo rende un
-errore. Per sistemare, aggiungete il ramo allo switch:
+errore. Per sistemare, decommentate il ramo già pronto nello switch:
 
 ```csharp
 Consegnato c => $"Consegnato il {c.Il:dd/MM}",

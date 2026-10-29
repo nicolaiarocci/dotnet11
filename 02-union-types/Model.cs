@@ -20,8 +20,9 @@ public closed record class StatoOrdine;
 public record class InAttesa : StatoOrdine;
 public record class Spedito(DateOnly Il, string Corriere) : StatoOrdine;
 public record class Annullato(string Motivo) : StatoOrdine;
-// DEMO LIVE: decommentare la riga seguente e ricompilare.
-// public record class Consegnato(DateOnly Il) : StatoOrdine;
+// DEMO LIVE: decommentare la riga seguente e ricompilare (CS8509),
+// poi decommentare anche il ramo Consegnato nello switch di Descrivi(StatoOrdine).
+//public record class Consegnato(DateOnly Il) : StatoOrdine;
 
 public record Ordine(int Id, string Cliente, decimal Totale, MetodoDiPagamento Pagamento, StatoOrdine Stato);
 
@@ -41,5 +42,6 @@ public static class Descrizioni
         InAttesa => "In attesa di spedizione",
         Spedito s => $"Spedito il {s.Il:dd/MM} con {s.Corriere}",
         Annullato a => $"Annullato: {a.Motivo}",
+        //Consegnato c => $"Consegnato il {c.Il:dd/MM}",
     };
 }
