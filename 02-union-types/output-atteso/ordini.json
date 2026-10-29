@@ -1,0 +1,1 @@
+[{"id":1,"cliente":"Rossi Srl","totale":120.50,"pagamento":"Carta Visa •••• 4242","stato":"Spedito il 20/11 con BRT"},{"id":2,"cliente":"Bianchi Spa","totale":89.00,"pagamento":"Bonifico su IT60X0542811101000000123456","stato":"In attesa di spedizione"},{"id":3,"cliente":"Verdi & C.","totale":45.90,"pagamento":"Contrassegno (+4,00 €)","stato":"Annullato: Richiesta del cliente"}]

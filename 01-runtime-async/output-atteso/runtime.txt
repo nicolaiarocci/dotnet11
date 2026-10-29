@@ -1,0 +1,9 @@
+Modalità: runtime
+
+Frame sullo stack: 5
+------------------------------------------------------------
+   Program.ApplicaScontiAsync  in Program.cs:38
+   Program.CalcolaTotaleAsync  in Program.cs:27
+   Program.CaricaOrdineAsync  in Program.cs:21
+   Program.<Main>$  in Program.cs:16
+   Program.<Main>

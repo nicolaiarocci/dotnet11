@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- C# 15 è il default per net11.0: union e closed non richiedono LangVersion preview. -->
+    <!-- Trasforma in errore lo switch non esaustivo: rende il momento "aggiungo un caso" più evidente. -->
+    <WarningsAsErrors>CS8509</WarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Allineata all'SDK installato (11.0.100-rc.3): aggiornare insieme all'SDK. -->
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0-rc.3.26522.148" />
+  </ItemGroup>
+
+</Project>

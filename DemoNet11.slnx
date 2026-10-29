@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/01-runtime-async/">
+    <Project Path="01-runtime-async/RuntimeAsyncDemo.csproj" />
+  </Folder>
+  <Folder Name="/02-union-types/">
+    <Project Path="02-union-types/UnionDemo.csproj" />
+  </Folder>
+</Solution>

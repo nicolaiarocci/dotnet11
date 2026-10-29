@@ -1,0 +1,178 @@
+{
+    "openapi": "3.2.0",
+    "info": {
+        "title": "UnionDemo | v1",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:5080"
+        }
+    ],
+    "paths": {
+        "/ordini/{id}/pagamento": {
+            "get": {
+                "tags": [
+                    "UnionDemo"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "pattern": "^-?(?:0|[1-9]\\d*)$",
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MetodoDiPagamento"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ordini": {
+            "get": {
+                "tags": [
+                    "UnionDemo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AnonymousTypeOfintAndstringAnddecimalAndstringAndstring"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AnonymousTypeOfintAndstringAnddecimalAndstringAndstring": {
+                "required": [
+                    "id",
+                    "cliente",
+                    "totale",
+                    "pagamento",
+                    "stato"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "pattern": "^-?(?:0|[1-9]\\d*)$",
+                        "type": [
+                            "integer",
+                            "string"
+                        ],
+                        "format": "int32"
+                    },
+                    "cliente": {
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    "totale": {
+                        "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+                        "type": [
+                            "number",
+                            "string"
+                        ],
+                        "format": "double"
+                    },
+                    "pagamento": {
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    "stato": {
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    }
+                }
+            },
+            "Bonifico": {
+                "required": [
+                    "iban"
+                ],
+                "type": "object",
+                "properties": {
+                    "iban": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CartaDiCredito": {
+                "required": [
+                    "circuito",
+                    "ultimeCifre"
+                ],
+                "type": "object",
+                "properties": {
+                    "circuito": {
+                        "type": "string"
+                    },
+                    "ultimeCifre": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Contrassegno": {
+                "required": [
+                    "supplemento"
+                ],
+                "type": "object",
+                "properties": {
+                    "supplemento": {
+                        "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+                        "type": [
+                            "number",
+                            "string"
+                        ],
+                        "format": "double"
+                    }
+                }
+            },
+            "MetodoDiPagamento": {
+                "type": "object",
+                "anyOf": [
+                    {
+                        "$ref": "#/components/schemas/CartaDiCredito"
+                    },
+                    {
+                        "$ref": "#/components/schemas/Bonifico"
+                    },
+                    {
+                        "$ref": "#/components/schemas/Contrassegno"
+                    }
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "UnionDemo"
+        }
+    ]
+}

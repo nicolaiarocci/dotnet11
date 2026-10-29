@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net11.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Valore di default della demo: runtime async attivo.
+         Si cambia da riga di comando con -p:AsyncMode=classic -->
+    <AsyncMode Condition="'$(AsyncMode)' == ''">runtime</AsyncMode>
+    <!-- Cartelle separate per modalità: il build incrementale non ricompila
+         quando cambia solo una proprietà, quindi senza questo passare da una
+         modalità all'altra riuserebbe la DLL dell'esecuzione precedente. -->
+    <OutputPath>bin/$(Configuration)/$(AsyncMode)/</OutputPath>
+    <IntermediateOutputPath>obj/$(Configuration)/$(AsyncMode)/</IntermediateOutputPath>
+  </PropertyGroup>
+
+  <!-- Modalità "runtime": async gestito dal runtime (.NET 11).
+       Verificato su SDK 11.0.100-rc.3: basta il flag del compilatore,
+       non esiste una proprietà MSBuild dedicata. -->
+  <PropertyGroup Condition="'$(AsyncMode)' == 'runtime'">
+    <Features>$(Features);runtime-async=on</Features>
+  </PropertyGroup>
+
+  <!-- Modalità "classic": state machine generate dal compilatore, come fino a .NET 10
+       (è il default per il codice utente, nessuna proprietà da impostare). -->
+
+  <!-- Rende visibile a runtime quale modalità è stata compilata. -->
+  <ItemGroup>
+    <RuntimeHostConfigurationOption Include="DemoAsyncMode" Value="$(AsyncMode)" />
+  </ItemGroup>
+
+</Project>
