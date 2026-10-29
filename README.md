@@ -1,6 +1,6 @@
 # .NET 11: non chiamatelo un semplice upgrade
 
-Le demo della sessione alla .NET Conference Italia 2026.
+Le demo della sessione alla [.NET Conference Italia 2026](https://www.aspitalia.com/eventi/101/.NET-Conference-Italia-2026-Milano.aspx) di Milano.
 
 | Cartella | Cosa mostra |
 |---|---|
