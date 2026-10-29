@@ -26,7 +26,16 @@ serializzazione, framework web e contratto OpenAPI.
 dotnet run
 ```
 
-L'app risponde su `http://localhost:5080`:
+L'app risponde su `http://localhost:5080`. Da un secondo terminale, con
+[`jq`](https://jqlang.org) per formattare il JSON:
+
+```
+curl -s localhost:5080/ordini | jq
+curl -s localhost:5080/ordini/2/pagamento | jq
+curl -s localhost:5080/openapi/v1.json | jq '.components.schemas.MetodoDiPagamento'
+```
+
+Gli endpoint:
 
 | URL | Cosa mostra |
 |---|---|
