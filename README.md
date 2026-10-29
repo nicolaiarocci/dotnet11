@@ -19,8 +19,8 @@ ancora installato l'SDK.
   (serve il supporto a C# 15).
 
 ```
-git clone <url-del-repo>
-cd demo-net11
+git clone https://github.com/nicolaiarocci/dotnet11.git
+cd dotnet11
 dotnet build DemoNet11.slnx
 ```
 
