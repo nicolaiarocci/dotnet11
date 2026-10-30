@@ -111,6 +111,38 @@ Se due casi hanno la stessa forma JSON, il classificatore strutturale non tira a
 indovinare: lancia un `NotSupportedException`. In quel caso serve un classificatore
 scritto a mano.
 
+### E la gerarchia chiusa?
+
+Di default System.Text.Json tratta una gerarchia `closed` come una normale gerarchia
+`abstract`: per un valore dichiarato `StatoOrdine` vede solo le proprietà del tipo dichiarato,
+che qui non ne ha. Non dà errore, ma i dati si perdono.
+
+```csharp
+StatoOrdine stato = new Spedito(new(2026, 11, 20), "BRT");
+```
+
+```json
+{}
+```
+
+Rileggere quel JSON con `Deserialize<StatoOrdine>` lancia un `NotSupportedException`, perché il
+tipo è astratto. Con l'opzione `InferClosedTypePolymorphism`, che funziona solo sui tipi `closed`,
+System.Text.Json scopre da solo i tipi derivati e scrive un discriminatore:
+
+```csharp
+JsonSerializerOptions opzioni = new(JsonSerializerDefaults.Web) { InferClosedTypePolymorphism = true };
+```
+
+```json
+{"$type":"Spedito","il":"2026-11-20","corriere":"BRT"}
+```
+
+Questo JSON si rilegge, anche quando due casi hanno la stessa forma. Lo stesso risultato si ottiene
+sul singolo tipo con `[JsonPolymorphic(InferClosedTypePolymorphism = true)]`. Il discriminatore è
+il nome semplice del tipo, quindi rinominare una classe cambia il contratto JSON.
+
+La demo non usa questa opzione: `/ordini` espone lo stato come stringa.
+
 ## Note
 
 - La versione di `Microsoft.AspNetCore.OpenApi` in `UnionDemo.csproj` è allineata alla
