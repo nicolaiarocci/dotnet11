@@ -5,4 +5,7 @@
   <Folder Name="/02-union-types/">
     <Project Path="02-union-types/UnionDemo.csproj" />
   </Folder>
+  <Folder Name="/03-benchmark-async/">
+    <Project Path="03-benchmark-async/RuntimeAsyncBenchmarks.csproj" />
+  </Folder>
 </Solution>

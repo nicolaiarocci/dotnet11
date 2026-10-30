@@ -8,3 +8,4 @@ obj/
 
 # Note da speaker, non pubblicate
 COPIONE.md
+BenchmarkDotNet.Artifacts/

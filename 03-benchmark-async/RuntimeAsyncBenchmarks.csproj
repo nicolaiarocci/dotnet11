@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net11.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Optimize>true</Optimize>
+    <!-- La modalità la sceglie ciascun job di BenchmarkDotNet con /p:AsyncMode=...
+         Il default vale solo per il processo host, che non esegue le misure. -->
+    <AsyncMode Condition="'$(AsyncMode)' == ''">runtime</AsyncMode>
+    <!-- Cartelle separate per modalità, come nella demo 1: il build incrementale non
+         ricompila quando cambia solo una proprietà. -->
+    <OutputPath>bin/$(Configuration)/$(AsyncMode)/</OutputPath>
+    <IntermediateOutputPath>obj/$(Configuration)/$(AsyncMode)/</IntermediateOutputPath>
+  </PropertyGroup>
+
+  <!-- Stesso interruttore della demo 01-runtime-async. -->
+  <PropertyGroup Condition="'$(AsyncMode)' == 'runtime'">
+    <Features>$(Features);runtime-async=on</Features>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <RuntimeHostConfigurationOption Include="BenchAsyncMode" Value="$(AsyncMode)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- La 0.15.8, ultima stabile, non riconosce .NET 11. -->
+    <PackageReference Include="BenchmarkDotNet" Version="0.16.0-preview.2" />
+  </ItemGroup>
+
+</Project>

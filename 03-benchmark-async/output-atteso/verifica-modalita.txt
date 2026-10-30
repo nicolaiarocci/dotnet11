@@ -1,0 +1,2 @@
+Modalità: classic, frame AsyncMethodBuilder sullo stack: 2
+Modalità: runtime, frame AsyncMethodBuilder sullo stack: 0

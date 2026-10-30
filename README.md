@@ -6,6 +6,7 @@ Le demo della sessione alla [.NET Conference Italia 2026](https://www.aspitalia.
 |---|---|
 | [`01-runtime-async`](01-runtime-async) | Lo stesso codice async compilato con le state machine classiche e con Runtime Async: 17 frame sullo stack contro 5. |
 | [`02-union-types`](02-union-types) | Union types e closed hierarchy di C# 15, dagli switch esaustivi fino a System.Text.Json e OpenAPI in una Minimal API. |
+| [`03-benchmark-async`](03-benchmark-async) | Quanto costa l'infrastruttura async nelle due modalità, misurato con BenchmarkDotNet: tempo e byte allocati, con e senza sospensione. |
 
 Ogni cartella ha un README con i comandi da lanciare e cosa osservare, più una
 sottocartella `output-atteso/` con i risultati di riferimento, utile se non avete
