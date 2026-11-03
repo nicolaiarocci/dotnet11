@@ -10,8 +10,8 @@ corrente, frame per frame.
 ## Provarla
 
 ```
-dotnet run -c Release -p:AsyncMode=classic   # state machine del compilatore
-dotnet run -c Release -p:AsyncMode=runtime   # Runtime Async (il default del progetto)
+dotnet run -c Release -p:AsyncMode=classic   # state machine del compilatore (il default del progetto)
+dotnet run -c Release -p:AsyncMode=runtime   # Runtime Async
 ```
 
 ## Cosa osservare

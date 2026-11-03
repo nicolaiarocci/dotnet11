@@ -5,9 +5,9 @@
     <TargetFramework>net11.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <!-- Valore di default della demo: runtime async attivo.
-         Si cambia da riga di comando con -p:AsyncMode=classic -->
-    <AsyncMode Condition="'$(AsyncMode)' == ''">runtime</AsyncMode>
+    <!-- Valore di default della demo: modello classico, come si comporta .NET
+         senza opzioni. Si cambia da riga di comando con -p:AsyncMode=runtime -->
+    <AsyncMode Condition="'$(AsyncMode)' == ''">classic</AsyncMode>
     <!-- Cartelle separate per modalità: il build incrementale non ricompila
          quando cambia solo una proprietà, quindi senza questo passare da una
          modalità all'altra riuserebbe la DLL dell'esecuzione precedente. -->
