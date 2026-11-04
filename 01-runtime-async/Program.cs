@@ -1,17 +1,15 @@
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
 // Demo 1 — Runtime Async: lo stack trace "dal vivo".
 //
-//   dotnet run -c Release -p:AsyncMode=classic   -> state machine del compilatore
-//   dotnet run -c Release -p:AsyncMode=runtime   -> async gestito dal runtime
+//   dotnet run -c Release   -> state machine del compilatore
+//   Decommentando <Features> in RuntimeAsyncDemo.csproj -> async gestito dal runtime
 //
 // La catena è la stessa dell'esempio della documentazione ufficiale:
 // tre metodi async annidati, e il più interno stampa lo stack "live".
 // Per una catena più lunga, aggiungere livelli: la differenza cresce.
-
-Console.WriteLine($"Modalità: {AppContext.GetData("DemoAsyncMode")}");
-Console.WriteLine();
 
 await CaricaOrdineAsync(42);
 
@@ -32,6 +30,10 @@ static async Task ApplicaScontiAsync(int id)
     // e "ripulisce" i MoveNext delle state machine: così si vede tutto
     // quello che c'è davvero sullo stack.
     var trace = new StackTrace(fNeedFileInfo: true);
+    // La modalità si deduce dallo stack: le state machine ci sono solo in classic.
+    var classic = trace.GetFrames().Any(f => f.GetMethod()?.DeclaringType?.IsAssignableTo(typeof(IAsyncStateMachine)) == true);
+    Console.WriteLine($"Modalità: {(classic ? "classic" : "runtime")}");
+    Console.WriteLine();
     Console.WriteLine($"Frame sullo stack: {trace.FrameCount}");
     Console.WriteLine(new string('-', 60));
     foreach (var frame in trace.GetFrames())

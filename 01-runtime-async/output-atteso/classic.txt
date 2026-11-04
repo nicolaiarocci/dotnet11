@@ -2,19 +2,19 @@ Modalità: classic
 
 Frame sullo stack: 17
 ------------------------------------------------------------
-   ApplicaScontiAsync.MoveNext  in Program.cs:34   <- state machine
+   ApplicaScontiAsync.MoveNext  in Program.cs:32   <- state machine
    AsyncMethodBuilderCore.Start
    AsyncTaskMethodBuilder.Start
    Program.ApplicaScontiAsync
-   CalcolaTotaleAsync.MoveNext  in Program.cs:25   <- state machine
+   CalcolaTotaleAsync.MoveNext  in Program.cs:23   <- state machine
    AsyncMethodBuilderCore.Start
    AsyncTaskMethodBuilder.Start
    Program.CalcolaTotaleAsync
-   CaricaOrdineAsync.MoveNext  in Program.cs:20   <- state machine
+   CaricaOrdineAsync.MoveNext  in Program.cs:18   <- state machine
    AsyncMethodBuilderCore.Start
    AsyncTaskMethodBuilder.Start
    Program.CaricaOrdineAsync
-   <Main>$.MoveNext  in Program.cs:16   <- state machine
+   <Main>$.MoveNext  in Program.cs:14   <- state machine
    AsyncMethodBuilderCore.Start
    AsyncTaskMethodBuilder.Start
    Program.<Main>$
