@@ -16,10 +16,10 @@ public union MetodoDiPagamento(CartaDiCredito, Bonifico, Contrassegno);
 //    dentro questo assembly. Il compilatore conosce tutti i figli.
 // ---------------------------------------------------------------
 
-public closed record class StatoOrdine;
-public record class InAttesa : StatoOrdine;
-public record class Spedito(DateOnly Il, string Corriere) : StatoOrdine;
-public record class Annullato(string Motivo) : StatoOrdine;
+public closed record StatoOrdine;
+public record InAttesa : StatoOrdine;
+public record Spedito(DateOnly Il, string Corriere) : StatoOrdine;
+public record Annullato(string Motivo) : StatoOrdine;
 // DEMO LIVE: decommentare la riga seguente e ricompilare (CS8509),
 // poi decommentare anche il ramo Consegnato nello switch di Descrivi(StatoOrdine).
 //public record class Consegnato(DateOnly Il) : StatoOrdine;
