@@ -26,6 +26,9 @@ Ordine[] ordini =
 app.MapGet("/ordini/{id:int}/pagamento", (int id) =>
     ordini.Single(o => o.Id == id).Pagamento);
 
+app.MapGet("/ordini/{id:int}/stato", (int id) =>
+    ordini.Single(o => o.Id == id).Stato);
+
 // Riepilogo leggibile, costruito con gli switch esaustivi.
 app.MapGet("/ordini", () => ordini.Select(o => new
 {

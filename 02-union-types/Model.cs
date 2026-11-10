@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace UnionDemo;
 
 // ---------------------------------------------------------------
@@ -16,6 +18,9 @@ public union MetodoDiPagamento(CartaDiCredito, Bonifico, Contrassegno);
 //    dentro questo assembly. Il compilatore conosce tutti i figli.
 // ---------------------------------------------------------------
 
+// The attribute below is required if you want to serialize a closed 
+// type, else you'll get an empty object.
+// [JsonPolymorphic(InferClosedTypePolymorphism = true)]
 public closed record StatoOrdine;
 public record InAttesa : StatoOrdine;
 public record Spedito(DateOnly Il, string Corriere) : StatoOrdine;
