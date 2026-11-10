@@ -7,7 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <!-- Decommentare la riga sotto per attivare Runtime Async (.NET 11).
          Commentata, il compilatore genera le state machine come fino a .NET 10.
-         Verificato su SDK 11.0.100-rc.3: basta il flag del compilatore,
+         Verificato su SDK 11.0.100: basta il flag del compilatore,
          non esiste una proprietà MSBuild dedicata. -->
     <!-- <Features>$(Features);runtime-async=on</Features> -->
   </PropertyGroup>

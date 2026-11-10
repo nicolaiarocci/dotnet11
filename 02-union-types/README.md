@@ -14,7 +14,7 @@ serializzazione, framework web e contratto OpenAPI.
 - una **closed hierarchy**: `StatoOrdine` si può derivare solo dentro questo assembly,
   quindi il compilatore ne conosce tutti i figli;
   ```csharp
-  public closed record class StatoOrdine;
+  public closed record StatoOrdine;
   ```
 - due `switch` esaustivi, uno per ciascuno, senza ramo `default`.
 
@@ -48,7 +48,7 @@ Gli endpoint:
 **1. Il compilatore controlla i casi.** In `Model.cs` decommentate la riga
 
 ```csharp
-// public record class Consegnato(DateOnly Il) : StatoOrdine;
+// public record Consegnato(DateOnly Il) : StatoOrdine;
 ```
 
 e lanciate `dotnet build`: il build fallisce perché lo switch su `StatoOrdine` non
@@ -146,6 +146,6 @@ La demo non usa questa opzione: `/ordini` espone lo stato come stringa.
 ## Note
 
 - La versione di `Microsoft.AspNetCore.OpenApi` in `UnionDemo.csproj` è allineata alla
-  RC 3 dell'SDK; con un SDK più recente conviene aggiornarla alla versione corrispondente.
+  GA dell'SDK (11.0.100); con un SDK più recente conviene aggiornarla alla versione corrispondente.
 - `Program.cs` imposta la cultura `it-IT`, così importi e date sono formattati
   all'italiana qualunque sia il locale della macchina.

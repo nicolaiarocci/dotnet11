@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Allineata all'SDK installato (11.0.100-rc.3): aggiornare insieme all'SDK. -->
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0-rc.3.26522.148" />
+    <!-- Allineata all'SDK installato (11.0.100): aggiornare insieme all'SDK. -->
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0" />
   </ItemGroup>
 
 </Project>

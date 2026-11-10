@@ -22,7 +22,7 @@ public record Spedito(DateOnly Il, string Corriere) : StatoOrdine;
 public record Annullato(string Motivo) : StatoOrdine;
 // DEMO LIVE: decommentare la riga seguente e ricompilare (CS8509),
 // poi decommentare anche il ramo Consegnato nello switch di Descrivi(StatoOrdine).
-//public record class Consegnato(DateOnly Il) : StatoOrdine;
+//public record Consegnato(DateOnly Il) : StatoOrdine;
 
 public record Ordine(int Id, string Cliente, decimal Totale, MetodoDiPagamento Pagamento, StatoOrdine Stato);
 

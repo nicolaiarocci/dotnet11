@@ -15,7 +15,7 @@ ancora installato l'SDK.
 ## Requisiti
 
 - [SDK .NET 11](https://dotnet.microsoft.com/download/dotnet/11.0). Le demo sono state
-  verificate con la 11.0.100-rc.3; `global.json` accetta questa versione o una successiva.
+  verificate con la 11.0.100; `global.json` accetta questa versione o una successiva.
 - Per aprire il codice: Visual Studio 2026, oppure VS Code con C# Dev Kit aggiornato
   (serve il supporto a C# 15).
 
